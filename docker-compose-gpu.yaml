@@ -21,7 +21,11 @@ services:
       - "6380:6380" # Redis shard port
       - "6381:6381" # Redis shard port
     environment:
+      - RAY_VERSION=${RAY_VERSION}
       - IS_RAY_HEAD=${IS_RAY_HEAD}
+      - NODE_IP_ADDRESS=${NODE_IP_ADDRESS}
+      - RAY_HEAD_IP=${RAY_HEAD_IP}
+      - USING_GPU=${USING_GPU}
     shm_size: 12G
     deploy:
       resources:

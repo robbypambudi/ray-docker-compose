@@ -1,5 +1,5 @@
 
-FROM rayproject/ray:2.40.0-py310-cpu
+FROM rayproject/ray:2.40.0-py310-gpu
 
 USER root
 

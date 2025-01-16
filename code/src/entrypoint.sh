@@ -1,4 +1,5 @@
-# entrypoint.sh
+#!/bin/bash
+
 NODE_IP_ADDRESS=${NODE_IP_ADDRESS}
 if [ "$IS_RAY_HEAD" = true ]; then
   echo "Starting Ray head node..."
@@ -18,5 +19,5 @@ else
    --dashboard-agent-grpc-port 50052 --dashboard-agent-listen-port 52365 \
    --metrics-export-port 8090  --object-manager-port 12346 \
    --min-worker-port 20000 --max-worker-port 20100 \
-   --address="$RAY_HEAD_IP:6379" --node-ip-address=$NODE_IP_ADDRESS 
+   --address="$RAY_HEAD_IP:6379" --node-ip-address=$NODE_IP_ADDRESS --block
 fi
