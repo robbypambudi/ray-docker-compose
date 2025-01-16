@@ -1,0 +1,35 @@
+# docker-compose.yaml
+version: "3"
+services:
+  ray:
+    image: ray
+    container_name: ray
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "6379:6379" # GCS server port
+      - "8265:8265" # Dashboard UI port
+      - "10001:10001" # Ray client server port
+      - "50052:50052" # Dashboard gRPC port
+      - "12345:12345" # Node manager port
+      - "12346:12346" # Object manager port
+      - "12347:12347" # Runtime env agent port
+      - "12348:12348" # Dashboard agent gRPC port
+      - "52365:52365" # Dashboard agent HTTP port
+      - "8090:8090" # Metrics export port
+      - "20000-20100:20000-20100" # Worker ports range
+      - "6380:6380" # Redis shard port
+      - "6381:6381" # Redis shard port
+    environment:
+      - IS_RAY_HEAD=${IS_RAY_HEAD}
+    shm_size: 12G
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1 # alternatively, use `count: all` for all GPUs
+              capabilities: [gpu]
+    volumes:
+      # Mount ./code to /code inside the container
+      - ./code:/app/code
