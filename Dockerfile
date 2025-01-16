@@ -1,4 +1,6 @@
-FROM rayproject/ray:${RAY_VERSION}
+
+FROM rayproject/ray:2.40.0-py310-cpu
+
 USER root
 
 # Working directory

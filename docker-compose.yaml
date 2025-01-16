@@ -20,8 +20,14 @@ services:
       - "20000-20100:20000-20100" # Worker ports range
       - "6380:6380" # Redis shard port
       - "6381:6381" # Redis shard port
+    env_file:
+      - .env
     environment:
+      - RAY_VERSION=${RAY_VERSION}
       - IS_RAY_HEAD=${IS_RAY_HEAD}
+      - NODE_IP_ADDRESS=${NODE_IP_ADDRESS}
+      - HEAD_IP_ADDRESS=${HEAD_IP_ADDRESS}
+      - USING_GPU=${USING_GPU}
     shm_size: 12G
     volumes:
       # Mount ./code to /code inside the container

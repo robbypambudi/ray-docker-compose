@@ -1,5 +1,5 @@
 # entrypoint.sh
-NODE_IP_ADDRESS="10.21.73.122"
+NODE_IP_ADDRESS=${NODE_IP_ADDRESS}
 if [ "$IS_RAY_HEAD" = true ]; then
   echo "Starting Ray head node..."
   ray start --head --disable-usage-stats --node-manager-port 12345 \
