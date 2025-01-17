@@ -7,6 +7,7 @@ services:
     build:
       dockerfile: Dockerfile
     ports:
+      - "8000:8000" # vLLM server port
       - "6379:6379" # GCS server port
       - "8265:8265" # Dashboard UI port
       - "10001:10001" # Ray client server port

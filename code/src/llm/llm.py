@@ -25,14 +25,7 @@ logger = logging.getLogger("ray.serve")
 app = FastAPI()
 
 
-@serve.deployment(
-    autoscaling_config={
-        "min_replicas": 0,
-        "max_replicas": 0,
-        "target_ongoing_requests": 5,
-    },
-    max_ongoing_requests=10,
-)
+@serve.deployment()
 @serve.ingress(app)
 class VLLMDeployment:
     def __init__(
@@ -130,7 +123,7 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
 
     # Adjust resource allocation
     pg_resources = []
-    num_cpus_per_actor = 8  # Adjustable based on workload per actor
+    num_cpus_per_actor = 20  # Adjustable based on workload per actor
     num_actors = min(tp, 2)  # Number of actors equals the number of GPUs
 
     # Deployment replica
