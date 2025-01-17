@@ -1,0 +1,7 @@
+{
+  "prettier.endOfLine": "lf",
+  // Set defaukt end of line to LF
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+
+}
