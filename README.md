@@ -45,7 +45,7 @@ docker compose -f docker-compose.yml up -d
 ```
 bash run_cluster.sh \
                   vllm/vllm-openai:latest \
-                  172.18.10.125 \
+                  10.21.73.122 \
                   --head \
                   ~/.cache/huggingface \
                   -e NCCL_SOCKET_IFNAME=eno1 \
